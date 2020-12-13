@@ -3,6 +3,7 @@
     "name": "notificationsupgrade",
     "slug": "notificationsupgrade",
     "version": "1.0.0",
+    "owner": "charliecruzan",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -13,10 +14,10 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
+      "bundleIdentifier": "cruzan.notificationsupgrade",
+      "buildNumber": "1",
       "supportsTablet": true
     },
     "web": {
