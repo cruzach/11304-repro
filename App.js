@@ -10,11 +10,13 @@ import {
 import { Notifications } from "expo";
 import * as Permissions from "expo-permissions";
 import Constants from "expo-constants";
+import * as NotificationsNew from "expo-notifications";
 
 export default class AppContainer extends React.Component {
   state = {
     expoPushToken: "",
     notification: {},
+    newToken: "",
   };
 
   registerForPushNotificationsAsync = async () => {
@@ -34,8 +36,9 @@ export default class AppContainer extends React.Component {
         return;
       }
       const token = await Notifications.getExpoPushTokenAsync();
+      const newToken = await NotificationsNew.getExpoPushTokenAsync();
       console.log(token);
-      this.setState({ expoPushToken: token });
+      this.setState({ expoPushToken: token, newToken: newToken });
     } else {
       alert("Must use physical device for Push Notifications");
     }
@@ -87,6 +90,8 @@ export default class AppContainer extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.message}>
+          <Text>Legacy push token: {this.state.expoPushToken}</Text>
+          <Text>New token: {this.state.expoPushToken}</Text>
           <Text>Origin: {this.state.notification.origin}</Text>
           <Text>Data: {JSON.stringify(this.state.notification.data)}</Text>
         </View>
