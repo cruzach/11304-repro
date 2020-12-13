@@ -17,7 +17,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "bundleIdentifier": "cruzan.notificationsupgrade",
-      "buildNumber": "1",
+      "buildNumber": "2",
       "supportsTablet": true
     },
     "web": {

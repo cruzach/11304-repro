@@ -36,7 +36,8 @@ export default class AppContainer extends React.Component {
         return;
       }
       const token = await Notifications.getExpoPushTokenAsync();
-      const newToken = await NotificationsNew.getExpoPushTokenAsync();
+      const newToken = await (await NotificationsNew.getExpoPushTokenAsync())
+        .data;
       console.log(token);
       this.setState({ expoPushToken: token, newToken: newToken });
     } else {
@@ -91,7 +92,7 @@ export default class AppContainer extends React.Component {
       <View style={styles.container}>
         <View style={styles.message}>
           <Text>Legacy push token: {this.state.expoPushToken}</Text>
-          <Text>New token: {this.state.expoPushToken}</Text>
+          <Text>New token: {this.state.newToken}</Text>
           <Text>Origin: {this.state.notification.origin}</Text>
           <Text>Data: {JSON.stringify(this.state.notification.data)}</Text>
         </View>
